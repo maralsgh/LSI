@@ -23,7 +23,7 @@ export class TableComponent {
               private datePipe: DatePipe) { }
 
 
-  getListOfExchanges(filter? : string){
+  private getListOfExchanges(filter? : string){
     this.loading = true;
     this.exchangeService.getListByFilter(filter).then(data => {
       this.rates = data[0].rates;
@@ -41,11 +41,9 @@ export class TableComponent {
       this.dateValue = undefined;
       this.getListOfExchanges();
     }
-
-
   }
 
-    dateIsValid(dateStr: string) {
+   private static dateIsValid(dateStr: string) {
         const regex = /^\d{4}-\d{2}-\d{2}$/;
 
         if (dateStr.match(regex) === null) {
@@ -68,7 +66,7 @@ export class TableComponent {
     if(event){
       this.dateValue = event;
       const date = this.datePipe.transform(event, 'yyyy-MM-dd');
-       if(this.dateIsValid(date!)){
+       if(TableComponent.dateIsValid(date!)){
          this.getListOfExchanges(date!)
        }
     }
@@ -86,6 +84,6 @@ export class TableComponent {
       this.getListOfExchanges();
       setTimeout(()=> {
         this.show = true;
-      }, 1001)
+      }, 1000)
     }
 }

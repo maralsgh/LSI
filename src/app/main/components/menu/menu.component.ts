@@ -9,7 +9,7 @@ import {ThemeService} from "../../services/theme.service";
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[] = [];
-  themes: any;
+  themes: MenuItem[] = [];
   selectedTheme: string = 'LIGHT';
   constructor(private themeService: ThemeService) { }
 
@@ -24,13 +24,12 @@ export class MenuComponent implements OnInit {
 
     ];
     this.themes = [
-      {mode: 'LIGHT', icon: 'pi pi-sun'},
-      {mode: 'DARK', icon: 'pi pi-moon'},
+      {label: 'LIGHT', icon: 'pi pi-sun'},
+      {label: 'DARK', icon: 'pi pi-moon'},
     ]
   }
 
-  switchTheme(event: any) {
-    console.log(event)
+  switchTheme(event: { value: string }) {
     if(event.value == 'DARK'){
       this.themeService.switchTheme('dark-blue')
     }else if(event.value == 'LIGHT'){
