@@ -1,0 +1,11 @@
+<p-menubar [model]="items">
+
+  <p-selectButton [options]="themes" (onChange)="switchTheme($event)" [(ngModel)]="selectedTheme" optionLabel="mode" optionValue="mode">
+    <ng-template let-item>
+
+      <i aria-hidden="true" [class]="item.icon"></i>
+     <span class="ml-1"> {{item.mode | titlecase}}</span>
+    </ng-template>
+  </p-selectButton>
+
+</p-menubar>
