@@ -22,4 +22,17 @@ describe('MenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should make theme dark', () => {
+    const example = {value: 'dark-blue'}
+    component.switchTheme(example);
+    expect(component.selectedTheme).toBe('dark-blue')
+  });
+
+  it('should make theme light', () => {
+    const example = {value: 'light-blue'}
+    component.switchTheme(example);
+    expect(component.selectedTheme).toBe('light-blue')
+  });
+
 });

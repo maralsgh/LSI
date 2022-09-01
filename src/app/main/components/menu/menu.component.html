@@ -1,6 +1,6 @@
 <p-menubar [model]="items">
 
-  <p-selectButton [options]="themes" (onChange)="switchTheme($event)" [(ngModel)]="selectedTheme" optionLabel="label" optionValue="label">
+  <p-selectButton [options]="themes" (onChange)="switchTheme($event)" [(ngModel)]="selectedTheme" optionLabel="label" optionValue="title">
     <ng-template let-item>
 
       <i aria-hidden="true" [class]="item.icon"></i>

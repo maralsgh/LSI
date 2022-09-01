@@ -6,6 +6,7 @@ import {TableComponent} from "./components/table/table.component";
 const routes: Routes = [
   {path: '' , component: LayoutComponent ,
     children:[
+      { path: '**', redirectTo: 'list', pathMatch: 'full' },
       {path: 'list' , component: TableComponent}
     ]
   },

@@ -10,7 +10,7 @@ import {ThemeService} from "../../services/theme.service";
 export class MenuComponent implements OnInit {
   items: MenuItem[] = [];
   themes: MenuItem[] = [];
-  selectedTheme: string = 'LIGHT';
+  selectedTheme: string =  'light-blue';
   constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
@@ -24,17 +24,13 @@ export class MenuComponent implements OnInit {
 
     ];
     this.themes = [
-      {label: 'LIGHT', icon: 'pi pi-sun'},
-      {label: 'DARK', icon: 'pi pi-moon'},
+      {label: 'LIGHT', icon: 'pi pi-sun', title: 'light-blue'},
+      {label: 'DARK', icon: 'pi pi-moon' ,  title: 'dark-blue'},
     ]
   }
 
-  switchTheme(event: { value: string }) {
-    if(event.value == 'DARK'){
-      this.themeService.switchTheme('dark-blue')
-    }else if(event.value == 'LIGHT'){
-      this.themeService.switchTheme('light-blue')
-    }
-
+  switchTheme(event: { value: string} ) {
+    this.selectedTheme = event.value;
+    this.themeService.switchTheme(event.value);
   }
 }

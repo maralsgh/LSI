@@ -43,7 +43,7 @@ export class TableComponent {
     }
   }
 
-   private static dateIsValid(dateStr: string) {
+    dateIsValid(dateStr: string) {
         const regex = /^\d{4}-\d{2}-\d{2}$/;
 
         if (dateStr.match(regex) === null) {
@@ -66,13 +66,13 @@ export class TableComponent {
     if(event){
       this.dateValue = event;
       const date = this.datePipe.transform(event, 'yyyy-MM-dd');
-       if(TableComponent.dateIsValid(date!)){
+       if(this.dateIsValid(date!)){
          this.getListOfExchanges(date!)
        }
     }
   }
 
-  onInput($event: { target: HTMLInputElement }) {
+  onInput($event: { target: { value: string } }) {
     if(!$event?.target?.value){
       this.dateValue = undefined;
       this.getListOfExchanges();
